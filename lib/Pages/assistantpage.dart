@@ -1,5 +1,6 @@
 import 'package:bottam/Images/images.dart';
 import 'package:bottam/assistant/Icebear/icebear.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,6 +19,15 @@ class _AssistantPageState extends State<AssistantPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(CupertinoIcons.back),
+        ),
+      ),
       body: SafeArea(
         child: Container(
           height: size.height,

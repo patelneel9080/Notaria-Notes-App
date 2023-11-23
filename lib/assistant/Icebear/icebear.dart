@@ -1,5 +1,6 @@
 import 'package:bottam/Images/images.dart';
 import 'package:bottam/config/app_constant.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'badreview.dart';
@@ -29,10 +30,17 @@ class _SecondPageState extends State<SecondPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.black,
+      leading: IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: Icon(CupertinoIcons.back),
+      ),),
       body: Container(
         height: size.height,
         width: size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(image: NetworkImage(BackgroundImg2.icebear),fit: BoxFit.cover),
         ),
         child: Column(
