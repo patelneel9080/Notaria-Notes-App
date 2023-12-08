@@ -15,7 +15,7 @@ class OnBoardingModel {
 List<OnBoardingModel> onBoardingScreen = [
   OnBoardingModel(
       image: BackgroundImg.bkg1,
-      subTitle: "I provide essential stuff for your ui designs every tuesday!",
+      subTitle: "",
       title: "Welcome $UserId !!"),
   OnBoardingModel(
       image: BackgroundImg2.trio,

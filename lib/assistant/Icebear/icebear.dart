@@ -30,6 +30,7 @@ class _SecondPageState extends State<SecondPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(backgroundColor: Colors.black,
       leading: IconButton(
         onPressed: () {

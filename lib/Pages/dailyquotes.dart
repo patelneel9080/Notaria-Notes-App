@@ -15,73 +15,73 @@ class _DailyQuotesState extends State<DailyQuotes> {
   List<String> quotes = [
     "Every day may not be good, but there's something good in every day.",
 
-        "Your attitude determines your direction.",
+    "Your attitude determines your direction.",
 
-        "Today is a new day, and it's yours to shape. Own it!",
+    "Today is a new day, and it's yours to shape. Own it!",
 
-        "The sun is a daily reminder that we too can rise again from the darkness, that we too can shine our own light.",
+    "The sun is a daily reminder that we too can rise again from the darkness, that we too can shine our own light.",
 
-        "Seize the day, embrace the present, and make it beautiful.",
+    "Seize the day, embrace the present, and make it beautiful.",
 
-        "Don't count the days; make the days count.",
+    "Don't count the days; make the days count.",
 
-        "Every morning brings new potential, but only if you make the most of it. You can't use up yesterday's hours on today's clock.",
+    "Every morning brings new potential, but only if you make the most of it. You can't use up yesterday's hours on today's clock.",
 
-        "Smile at the obstacle, for it is a bridge.",
+    "Smile at the obstacle, for it is a bridge.",
 
-        "Each morning we are born again. What we do today matters most.",
+    "Each morning we are born again. What we do today matters most.",
 
-        "Today's accomplishments were yesterday's impossibilities.",
+    "Today's accomplishments were yesterday's impossibilities.",
 
-        "The best way to predict the future is to create it.",
+    "The best way to predict the future is to create it.",
 
-        "Your energy introduces you before you even speak.",
+    "Your energy introduces you before you even speak.",
 
-        "Today is a gift, that's why it's called the present.",
+    "Today is a gift, that's why it's called the present.",
 
-        "Don't wait for the perfect moment, take the moment and make it perfect.",
+    "Don't wait for the perfect moment, take the moment and make it perfect.",
 
-        "You have within you right now, everything you need to deal with whatever the world can throw at you.",
+    "You have within you right now, everything you need to deal with whatever the world can throw at you.",
 
-        "The only limit to our realization of tomorrow will be our doubts of today.",
+    "The only limit to our realization of tomorrow will be our doubts of today.",
 
-        "Life is 10% what happens to us and 90% how we react to it.",
+    "Life is 10% what happens to us and 90% how we react to it.",
 
-        "The more you praise and celebrate your life, the more there is in life to celebrate.",
+    "The more you praise and celebrate your life, the more there is in life to celebrate.",
 
-        "Your life does not get better by chance, it gets better by change.",
+    "Your life does not get better by chance, it gets better by change.",
 
-        "You are never too old to set another goal or to dream a new dream.",
+    "You are never too old to set another goal or to dream a new dream.",
 
-        "Do not wait to strike till the iron is hot, but make it hot by striking.",
+    "Do not wait to strike till the iron is hot, but make it hot by striking.",
 
-        "The only way to do great work is to love what you do.",
+    "The only way to do great work is to love what you do.",
 
-        "In every day, there are 1,440 minutes. That means we have 1,440 daily opportunities to make a positive impact.",
+    "In every day, there are 1,440 minutes. That means we have 1,440 daily opportunities to make a positive impact.",
 
-        "Difficulties in life are intended to make us better, not bitter.",
+    "Difficulties in life are intended to make us better, not bitter.",
 
-        "Believe you can and you're halfway there.",
+    "Believe you can and you're halfway there.",
 
-        "Happiness is not something ready-made. It comes from your own actions.",
+    "Happiness is not something ready-made. It comes from your own actions.",
 
-        "Your vibe attracts your tribe.",
+    "Your vibe attracts your tribe.",
 
-        "Be the reason someone smiles today.",
+    "Be the reason someone smiles today.",
 
-        "The secret of getting ahead is getting started.",
+    "The secret of getting ahead is getting started.",
 
-        "Surround yourself with those who only lift you higher.",
+    "Surround yourself with those who only lift you higher.",
 
-        "You are the sky. Everything else is just the weather.",
+    "You are the sky. Everything else is just the weather.",
 
-        "The best way to predict your future is to create it.",
+    "The best way to predict your future is to create it.",
 
-        "Every morning brings new potential, but only if you start it right.",
+    "Every morning brings new potential, but only if you start it right.",
 
-        "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
 
-        "You are stronger than you think.",
+    "You are stronger than you think.",
     // Add more quotes as needed
   ];
 
@@ -96,7 +96,7 @@ class _DailyQuotesState extends State<DailyQuotes> {
     changeQuote();
 
     // Schedule the auto quote change after 5 seconds (adjust the duration as needed)
-    Timer.periodic(Duration(hours: 22), (timer) {
+    Timer.periodic(const Duration(hours: 22), (timer) {
       changeQuote();
     });
   }
@@ -122,9 +122,9 @@ class _DailyQuotesState extends State<DailyQuotes> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: const Color(0xffECC1CD),
       appBar: AppBar(
-        backgroundColor: Color(0xffECC1CD),
+        backgroundColor: const Color(0xffECC1CD),
         elevation: 0,
         leading: InkWell(
             onTap: () {
@@ -148,7 +148,7 @@ class _DailyQuotesState extends State<DailyQuotes> {
           children: [
             const Text(
               textAlign: TextAlign.center,
-              "(Daily Quote - Every 24 hours it changed)",
+              "(Daily Quote - Every times it changed when u come back)",
               style: TextStyle(color: Colors.white,fontSize: 12),
             ),
             SizedBox(

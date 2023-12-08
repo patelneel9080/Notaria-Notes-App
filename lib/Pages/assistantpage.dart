@@ -44,9 +44,9 @@ class _AssistantPageState extends State<AssistantPage> {
                     width: size.width/2.2,
                     margin: EdgeInsets.all(6),
                     decoration: BoxDecoration(
-                      image: DecorationImage(image: NetworkImage(WelcomeBkg.grizzassistant),fit: BoxFit.cover),
-                      color: Colors.greenAccent,
-                      borderRadius: BorderRadius.circular(12)
+                        image: DecorationImage(image: NetworkImage(WelcomeBkg.grizzassistant),fit: BoxFit.cover),
+                        color: Colors.greenAccent,
+                        borderRadius: BorderRadius.circular(12)
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,

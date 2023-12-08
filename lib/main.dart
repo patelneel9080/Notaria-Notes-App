@@ -7,11 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Pages/assistantpage.dart';
 import 'assistant/Icebear/badreview.dart';
 import 'Pages/firstpage.dart';
-import 'assistant/Icebear/icebear.dart';
+import 'assistant/Icebea'
+    'r/icebear.dart';
 import 'config/app_constant.dart';
-import 'config/testone.dart';
-
-
+import 'Tests/testone.dart';
 
 Future<void> main()async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,10 +26,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return   MaterialApp(
+    return  MaterialApp(
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(iconTheme: IconThemeData(color: Colors.white)),
+      ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: FirstPage(),
     );
   }
 }
-

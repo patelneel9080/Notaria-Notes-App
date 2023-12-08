@@ -2,6 +2,7 @@ class BackgroundImg {
   static const bkg1 = "https://img.freepik.com/premium-photo/abstract-background-design-images-wallpaper-ai-generated_643360-88910.jpg";
   static const bkg2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnl8iNqQum86w5aTsGPeKaUDwyyZ-Oa7w7t2BbENYFglsCTCoL";
   static const krishnaimg = "https://i.pinimg.com/550x/2c/ae/a0/2caea01891af73349dc0efbf181e6092.jpg";
+  static const loginimg = "https://funmauj.b-cdn.net/test/550301.jpg";
 }
 
 class WelcomeBkg {
@@ -20,6 +21,7 @@ class PageImg {
 
 class BackgroundImg2 {
   static const trio = "https://wallpapers.com/images/high/we-bare-bears-aesthetic-pastel-pink-d6976si1cj6ocee6.webp";
+  static const three = "https://static.wikia.nocookie.net/webarebears/images/f/f3/Cubs.png/revision/latest?cb=20160612202809";
   static const grizzly = "https://i.pinimg.com/originals/bb/81/c2/bb81c2c3cce31edb22259ff12b7715f3.jpg";
   static const panda = "https://wallpapers.com/images/high/we-bare-bears-aesthetic-blue-panda-nqat535a1cavo464.webp";
   static const icebear = "https://1474899231.rsc.cdn77.org/api/cc-wallpaper-image/200/420/snout-art-terrestrial-animal-s0o5zzy";

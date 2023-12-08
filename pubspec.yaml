@@ -41,6 +41,7 @@ dependencies:
   intl: ^0.18.1
   provider: ^6.1.1
   sqflite: ^2.3.0
+  map: ^1.4.2
 
 dev_dependencies:
   flutter_test:

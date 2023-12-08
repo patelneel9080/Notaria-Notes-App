@@ -122,9 +122,9 @@ class PageViewContainer extends StatelessWidget {
 
   const PageViewContainer(
       {super.key,
-      required this.image,
-      required this.title,
-      required this.subTitle});
+        required this.image,
+        required this.title,
+        required this.subTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +140,7 @@ class PageViewContainer extends StatelessWidget {
       child: Column(
 
         children: [
-           SizedBox(
+          SizedBox(
             height: size.height/2,
           ),
           Text(
@@ -154,7 +154,7 @@ class PageViewContainer extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-           SizedBox(
+          SizedBox(
             height: size.height/43,
           ),
           SizedBox(

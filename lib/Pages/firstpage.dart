@@ -25,23 +25,21 @@ class _FirstPageState extends State<FirstPage> {
       body: Container(
         height: size.height,
         width: size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             color: Colors.black,
             image: DecorationImage(
-                image: NetworkImage(BackgroundImg.krishnaimg),
+                image: NetworkImage(BackgroundImg.loginimg),
                 fit: BoxFit.cover)),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
               height: size.height / 6,
               width: size.width,
-              decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(.6),
-                  borderRadius: BorderRadius.circular(12)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(height: size.height/16,),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -59,20 +57,17 @@ class _FirstPageState extends State<FirstPage> {
                           style: const TextStyle(fontWeight: FontWeight.w400),
                           decoration: InputDecoration(
                               border: InputBorder.none,
-                              labelText: "Name",
+
                               enabledBorder: UnderlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                                 borderSide:
-                                    BorderSide(color: Colors.transparent),
+                                const BorderSide(color: Colors.transparent),
                               ),
-                              labelStyle: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
                               hintText: 'Type your name',
                               focusedBorder: UnderlineInputBorder(
                                 borderRadius: BorderRadius.circular(24),
                                 borderSide:
-                                    BorderSide(color: Colors.transparent),
+                                const BorderSide(color: Colors.transparent),
                               ),
                               hintStyle: const TextStyle(
                                   fontSize: 16, color: Colors.black54),
@@ -85,16 +80,15 @@ class _FirstPageState extends State<FirstPage> {
                               )),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 4,
                       ),
                       Container(
                         height: size.height / 14,
                         width: size.width / 6.5,
-
                         child: ElevatedButton(
-                          style: ButtonStyle(
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(36)))
+                          style: ButtonStyle(alignment: Alignment.center,
+                              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(36)))
                           ),
                           onPressed: () async {
                             if (_UserId.text.isEmpty) {
@@ -106,7 +100,7 @@ class _FirstPageState extends State<FirstPage> {
                               isCheck=true;
                               setState(() {});
                               SharedPreferences pref =
-                                  await SharedPreferences.getInstance();
+                              await SharedPreferences.getInstance();
                               pref.setString("UserId", _UserId.text);
                               UserId = pref.getString("UserId")!;
                               Future.delayed(const Duration(seconds: 3), () {
@@ -114,23 +108,21 @@ class _FirstPageState extends State<FirstPage> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const WelcomeScreen(),
+                                      const WelcomeScreen(),
                                     ));
                               });
                             }
                           },
                           child: (!isCheck)
                               ? const Icon(
-                                  CupertinoIcons.arrow_right,
-                                  color: Colors.black,
-                                )
-                              : const SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                  child: CircularProgressIndicator(
-                                    color: Colors.white,
-                                  ),
-                                ),
+                            CupertinoIcons.arrow_right,
+                            color: Colors.black,
+                          )
+                              :  const SizedBox(height: 15,width: 35,
+                            child: CircularProgressIndicator(
+                              color: Colors.blue,
+                            ),
+                          ),
                         ),
                       )
                     ],
