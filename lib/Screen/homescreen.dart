@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Pages/assistantpage.dart';
 import '../Pages/dailyquotes.dart';
 import '../Tests/testone.dart';
+import '../theme/app_theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,7 +25,8 @@ class _HomePageState extends State<HomePage> {
       notes.add(note);
     });
   }
-  void editNote(String note){
+
+  void editNote(String note) {
     setState(() {
       notes.addAll(notes);
     });
@@ -35,15 +37,19 @@ class _HomePageState extends State<HomePage> {
       notes.removeAt(index);
     });
   }
+
   void _navigateToEditNote(int index) {
+    print("Neel:${notes[index]}");
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => AddNote(addNote: _addNote, index: 0, note: notes[index])
-      ),
+          builder: (context) => AddNote(
+                addNote: _addNote,
+                index: 0,
+                note: notes[index],
+              )),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -51,26 +57,52 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: const Text("NOTARIA",style: TextStyle(color: Colors.white),),
+
+        backgroundColor: Colors.deepPurpleAccent,
+        title: const Text(
+          "NOTARIA",
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
-          IconButton(
+          // IconButton(
+          //     onPressed: () {
+          //       Navigator.push(
+          //           context,
+          //           MaterialPageRoute(
+          //             builder: (context) => DailyQuotes(),
+          //           ));
+          //     },
+          //     icon: const Icon(CupertinoIcons.smiley))
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isLight = !isLight;
+                print(isLight);
+              });
+            },
+            child: IconButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DailyQuotes(),
-                    ));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => DailyQuotes(),));
               },
-              icon: const Icon(CupertinoIcons.smiley))
+              icon: Icon(CupertinoIcons.quote_bubble_fill
+              ,color: Colors.amber,)
+            ),
+          ),
         ],
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddNote(addNote: _addNote, index: 0, note: '',)),
+            MaterialPageRoute(
+              builder: (context) => AddNote(
+                addNote: _addNote,
+                index: 0,
+                note: '',
+              ),
+            ),
           );
         },
         tooltip: 'Add Note',
@@ -84,33 +116,62 @@ class _HomePageState extends State<HomePage> {
                 decoration: const BoxDecoration(
                   color: Colors.deepPurpleAccent,
                 ),
-                child: Text(
-                  UserId,
-                  style: const TextStyle(color: Colors.white, fontSize: 24),
-                )),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      " Hi $UserId",
+                      style: const TextStyle(color: Colors.white, fontSize: 24),
+                    ),
+                    Image.network(WelcomeBkg.bitemoji)
+                  ],
+                ),),
             ListTile(
               leading: const Icon(Icons.assistant),
-              title: const Text("Assistant",style: TextStyle(color:Color(0xff898989),fontWeight: FontWeight.w600),),
+              title: const Text(
+                "Assistant",
+                style: TextStyle(
+                    color: Color(0xff898989), fontWeight: FontWeight.w600),
+              ),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const AssistantPage(),));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AssistantPage(),
+                    ));
               },
             ),
             ListTile(
               leading: const Icon(Icons.exit_to_app),
-              title: const Text("Log Out",style: TextStyle(color:Color(0xff898989),fontWeight: FontWeight.w600),),
+              title: const Text(
+                "Log Out",
+                style: TextStyle(
+                    color: Color(0xff898989), fontWeight: FontWeight.w600),
+              ),
               onTap: () {
                 setState(() {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const FirstPage(),));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FirstPage(),
+                      ));
                 });
               },
             )
           ],
         ),
       ),
-      body: Container(height: size.height,width: size.width,
+      body: Container(
+        height: size.height,
+        width: size.width,
         child: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
           child: Column(
             children: [
+              SizedBox(
+                height: size.height / 44,
+              ),
               InkWell(
                 onTap: () {
                   Navigator.push(
@@ -149,42 +210,48 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: size.height,
-                width: size.width/1.8,
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  physics: const ScrollPhysics(),
-                  itemCount: notes.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        _navigateToEditNote(index);
-                      },
-                      child: Flexible(
-                        fit: FlexFit.tight,
-                        child: Container(
-                          height: size.height/9,
-                          width: size.width/1.8,
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            color: Colors.amber,
-                            image: const DecorationImage(image: NetworkImage(PageImg.notebkg),fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: ListTile(
-                            trailing: IconButton(
-                              onPressed: (){
-                                deleteNote(index);
-                              },
-                              icon: const Icon(Icons.delete),
-                            ),
-                            title: Text(notes[index]),
-                          ),
-                        ),
+                height: size.height / 54,
+              ),
+
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(width: size.width/17,),
+                  Text("Your Notes :",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
+                ],
+              ),
+              SizedBox(
+                height: size.height / 74,
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: notes.length,
+                itemBuilder: (context, index) {
+                  return Flexible(
+                    child: Container(
+                      margin:
+                          const EdgeInsets.only(left: 14, right: 14, top: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        image: const DecorationImage(
+                            image: NetworkImage(PageImg.notebkg),
+                            fit: BoxFit.cover),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                    );
-                  },
-                ),
+                      child: ListTile(
+                        trailing: IconButton(
+                          onPressed: () {
+                            deleteNote(index);
+                          },
+                          icon: const Icon(Icons.delete),
+                        ),
+                        title: Text(notes[index]),
+                      ),
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -194,15 +261,19 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-
 class AddNote extends StatefulWidget {
   final Function(String) addNote;
 
-  AddNote({required this.addNote, required int index, required String note});
+  AddNote({
+    required this.addNote,
+    required int index,
+    required String note,
+  });
 
   @override
   _AddNoteState createState() => _AddNoteState();
 }
+
 class NoteTaker extends StatefulWidget {
   @override
   _NoteTakerState createState() => _NoteTakerState();
@@ -220,6 +291,7 @@ class _NoteTakerState extends State<NoteTaker> {
       inputController.clear();
     });
   }
+
   void _editNote(int index) {
     Navigator.push(
       context,
@@ -231,6 +303,7 @@ class _NoteTakerState extends State<NoteTaker> {
       ),
     );
   }
+
   void saveNote(int index, String text) {
     setState(() {
       notes[index] = text;
@@ -241,9 +314,9 @@ class _NoteTakerState extends State<NoteTaker> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => EditNote(
+        builder: (context) => NoteEditPage(
           note: notes[index],
-          noteIndex: index,
+          onSave: (text) => saveNote(index, text),
         ),
       ),
     );
@@ -258,13 +331,22 @@ class _NoteTakerState extends State<NoteTaker> {
       body: ListView.builder(
         itemCount: notes.length,
         itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              title: Text(notes[index]),
-              trailing: IconButton(
-                icon: const Icon(Icons.edit),
-                onPressed: () => _navigateToEditNote(index),
-              ),
+          return ListTile(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NoteEditPage(
+                            note: notes[index],
+                            onSave: (String) {},
+                          )));
+            },
+            title: Text(notes[index]),
+            trailing: IconButton(
+              icon: const Icon(Icons.edit),
+              onPressed: () {
+                print(notes[index]);
+              },
             ),
           );
         },
@@ -278,25 +360,25 @@ class _NoteTakerState extends State<NoteTaker> {
   }
 }
 
-
 class _AddNoteState extends State<AddNote> {
   TextEditingController _controller = TextEditingController();
-  TextEditingController _titlecontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+
       appBar: AppBar(
-        title: TextField(
-          autocorrect: true,
-          keyboardType: TextInputType.multiline,
-          maxLines: 1,
-          style: const TextStyle(fontSize: 22),
-          controller: _titlecontroller,
-          decoration: const InputDecoration(
-            labelText: 'Title',
+        title: Text("Add Note",style: TextStyle(color: Colors.white),),
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
           ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: Padding(
@@ -306,9 +388,10 @@ class _AddNoteState extends State<AddNote> {
           width: size.width,
           child: TextField(
             autocorrect: true,
+            cursorColor: Colors.white,
             keyboardType: TextInputType.multiline,
             maxLines: null,
-            style: const TextStyle(fontSize: 18),
+            style: const TextStyle(color: Colors.white,fontSize: 18),
             controller: _controller,
             decoration: const InputDecoration(
               labelText: 'Note',
@@ -329,57 +412,64 @@ class _AddNoteState extends State<AddNote> {
   }
 }
 
-class EditNote extends StatefulWidget {
+class NoteEditPage extends StatefulWidget {
   final String note;
-  final int noteIndex;
+  final Function(String) onSave;
 
-  EditNote({required this.note, required this.noteIndex});
+  NoteEditPage({
+    required this.note,
+    required this.onSave,
+  });
 
   @override
-  _EditNoteState createState() => _EditNoteState();
+  _NoteEditPageState createState() => _NoteEditPageState();
 }
 
-class _EditNoteState extends State<EditNote> {
-  late TextEditingController _inputController;
+class _NoteEditPageState extends State<NoteEditPage> {
+  TextEditingController _textController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _inputController = TextEditingController(text: widget.note);
-  }
-
-  @override
-  void dispose() {
-    _inputController.dispose();
-    super.dispose();
-  }
-
-  void _updateNote() {
-    setState(() {
-      NoteTaker.of(context).notes[widget.noteIndex] = _inputController.text;
-      Navigator.pop(context);
-    });
+    _textController.text = widget.note;
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Note'),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
+        title: Text('Edit Note'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.check,color: Colors.black,),
-            onPressed: _updateNote,
+            icon: Icon(
+              Icons.save,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              widget.onSave(_textController.text);
+              Navigator.pop(context);
+              print(widget.onSave(_textController.text));
+            },
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(16.0),
         child: TextField(
-          controller: _inputController,
+          controller: _textController,
           keyboardType: TextInputType.multiline,
           maxLines: null,
-          autofocus: true,
+          style: TextStyle(fontSize: 18.0, color: Colors.black),
         ),
       ),
     );

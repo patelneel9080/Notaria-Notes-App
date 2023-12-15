@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../assistant/Panda/panda_security.dart';
+
 
 
 class AssistantPage extends StatefulWidget {
@@ -55,20 +57,25 @@ class _AssistantPageState extends State<AssistantPage> {
                       ],
                     ),
                   ),
-                  Container(
-                    height: size.height/2.5,
-                    width: size.width/2.2,
-                    margin: EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(image: NetworkImage(WelcomeBkg.pandaassistant),fit: BoxFit.cover),
-                        color: Colors.greenAccent,
-                        borderRadius: BorderRadius.circular(12)
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text("Panda",style: GoogleFonts.staatliches(color: Colors.yellowAccent,fontSize: 28),)
-                      ],
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => PandaSecurity(),));
+                    },
+                    child: Container(
+                      height: size.height/2.5,
+                      width: size.width/2.2,
+                      margin: const EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                          image: const DecorationImage(image: NetworkImage(WelcomeBkg.pandaassistant),fit: BoxFit.cover),
+                          color: Colors.greenAccent,
+                          borderRadius: BorderRadius.circular(12)
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("Panda",style: GoogleFonts.staatliches(color: Colors.yellowAccent,fontSize: 28),)
+                        ],
+                      ),
                     ),
                   ),
                 ],

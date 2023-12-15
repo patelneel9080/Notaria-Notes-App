@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -54,7 +53,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) =>  HomePage(),));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ));
                     },
                     child: const Text(
                       "Skip",
@@ -84,10 +87,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () {
-
-                      if(controller.initialPage == 1){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
-                      }else{
+                      if (controller.initialPage == 1) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ));
+                      } else {
                         controller.nextPage(
                             duration: const Duration(milliseconds: 500),
                             curve: Curves.linear);
@@ -122,9 +128,9 @@ class PageViewContainer extends StatelessWidget {
 
   const PageViewContainer(
       {super.key,
-        required this.image,
-        required this.title,
-        required this.subTitle});
+      required this.image,
+      required this.title,
+      required this.subTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -135,13 +141,13 @@ class PageViewContainer extends StatelessWidget {
       width: size.width,
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(1),
-        image: DecorationImage(image: NetworkImage(image),opacity: .5,fit: BoxFit.cover),
+        image: DecorationImage(
+            image: NetworkImage(image), opacity: .5, fit: BoxFit.cover),
       ),
       child: Column(
-
         children: [
           SizedBox(
-            height: size.height/2,
+            height: size.height / 2,
           ),
           Text(
             title,
@@ -155,7 +161,7 @@ class PageViewContainer extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(
-            height: size.height/43,
+            height: size.height / 43,
           ),
           SizedBox(
             width: size.width - 190,

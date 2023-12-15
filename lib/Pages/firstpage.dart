@@ -39,7 +39,9 @@ class _FirstPageState extends State<FirstPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: size.height/16,),
+                  SizedBox(
+                    height: size.height / 16,
+                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -57,17 +59,16 @@ class _FirstPageState extends State<FirstPage> {
                           style: const TextStyle(fontWeight: FontWeight.w400),
                           decoration: InputDecoration(
                               border: InputBorder.none,
-
                               enabledBorder: UnderlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                                 borderSide:
-                                const BorderSide(color: Colors.transparent),
+                                    const BorderSide(color: Colors.transparent),
                               ),
                               hintText: 'Type your name',
                               focusedBorder: UnderlineInputBorder(
                                 borderRadius: BorderRadius.circular(24),
                                 borderSide:
-                                const BorderSide(color: Colors.transparent),
+                                    const BorderSide(color: Colors.transparent),
                               ),
                               hintStyle: const TextStyle(
                                   fontSize: 16, color: Colors.black54),
@@ -87,9 +88,12 @@ class _FirstPageState extends State<FirstPage> {
                         height: size.height / 14,
                         width: size.width / 6.5,
                         child: ElevatedButton(
-                          style: ButtonStyle(alignment: Alignment.center,
-                              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(36)))
-                          ),
+                          style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.blue),
+                              alignment: Alignment.center,
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(36)))),
                           onPressed: () async {
                             if (_UserId.text.isEmpty) {
                               setState(() {
@@ -97,32 +101,37 @@ class _FirstPageState extends State<FirstPage> {
                               });
                             } else {
                               _error = "";
-                              isCheck=true;
+                              isCheck = true;
                               setState(() {});
                               SharedPreferences pref =
-                              await SharedPreferences.getInstance();
-                              pref.setString("UserId", _UserId.text);
-                              UserId = pref.getString("UserId")!;
-                              Future.delayed(const Duration(seconds: 3), () {
+                                  await SharedPreferences.getInstance();
+                              pref.setBool("isLogin", true);
+                              print(isLogin);
+                              pref.setString("UserId", _UserId.text).whenComplete(() => Future.delayed(const Duration(seconds: 3), () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
                                       const WelcomeScreen(),
                                     ));
-                              });
+                              }));
+                              UserId = pref.getString("UserId")!;
+
+
                             }
                           },
                           child: (!isCheck)
                               ? const Icon(
-                            CupertinoIcons.arrow_right,
-                            color: Colors.black,
-                          )
-                              :  const SizedBox(height: 15,width: 35,
-                            child: CircularProgressIndicator(
-                              color: Colors.blue,
-                            ),
-                          ),
+                                  CupertinoIcons.arrow_right,
+                                  color: Colors.black,
+                                )
+                              : const SizedBox(
+                                  height: 15,
+                                  width: 35,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ),
                         ),
                       )
                     ],

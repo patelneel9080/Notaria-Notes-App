@@ -25,7 +25,8 @@ class _NoteHomePageState extends State<NoteHomePage> {
 
   void _addNote() {
     setState(() {
-      _notes.add('');
+      _notes.add(_textController.text);
+      _textController.clear();
     });
   }
 
